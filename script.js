@@ -28,8 +28,31 @@ function generatePassword(){
 
   for(let i = 0; i < pwLength;)
   {
-
-    if(generatedPassword.length < pwLength){
+    console.log(generatedPassword.length)
+    if(generatedPassword.length === 0)
+    {
+      if(pwLowerCase)
+      {
+        generatedPassword += lowerCase[Math.floor(Math.random() * (lowerCase.length))];
+        i++
+      }
+      if(pwUpperCase)
+      {
+        generatedPassword += upperCase[Math.floor(Math.random() * (upperCase.length))];
+        i++
+      }
+      if(pwNumeric)
+      {
+        generatedPassword += numeric[Math.floor(Math.random() * (numeric.length))];
+        i++
+      }
+      if(pwSpecialChars)
+      {
+        generatedPassword += specialChars[Math.floor(Math.random() * (specialChars.length))];
+        i++
+      }
+    }
+    else if(generatedPassword.length < pwLength){
 
       let selectedCharType = Math.floor(Math.random() * 4)
 
