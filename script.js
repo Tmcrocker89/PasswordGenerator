@@ -13,22 +13,31 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
+//this function takes in the parameters giving and generates the password
 function generatePassword(){
   let generatedPassword = "";
+  //prompts for how long the password needs to be
   let pwLength = prompt("How long do you want your password? 8-128 chars");
-  let pwLowerCase = confirm("Do you want lower case?");
-  let pwUpperCase = confirm("Do you want upper case?");
-  let pwNumeric = confirm("Do you want numeric?");
+  //asks if you want to include lower case letters
+  let pwLowerCase = confirm("Do you want lower case letters?");
+  //asks if you want to include upper case letters
+  let pwUpperCase = confirm("Do you want upper case letters?");
+  //asks if you want to include numbers
+  let pwNumeric = confirm("Do you want numeric values?");
+  //asks if you want to lincude special characters
   let pwSpecialChars = confirm("Do you want special chars?");
+
+  //arrays of the different value types
   let upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
   let lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
   let numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
   let specialChars = ["`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "=", "\\", "/", "[", "]",";", ":"]
 
+  //loops the length of the pw requested
   for(let i = 0; i < pwLength;)
   {
     console.log(generatedPassword.length)
+    //on the first pass through this makes sure atleast 1 of each type selected is entered into the password
     if(generatedPassword.length === 0)
     {
       if(pwLowerCase)
@@ -52,6 +61,8 @@ function generatePassword(){
         i++
       }
     }
+    //after it includes atleast one of each type, as long as the password length is less than the required length
+    //it selects a random number, then selects a random position in the array to get the character to concatonate to the password
     else if(generatedPassword.length < pwLength){
 
       let selectedCharType = Math.floor(Math.random() * 4)
@@ -80,6 +91,6 @@ function generatePassword(){
     }
   
   }
-
+  //returns the password
   return generatedPassword
 }
