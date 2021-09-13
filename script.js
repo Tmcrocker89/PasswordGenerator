@@ -19,13 +19,13 @@ function generatePassword(){
   //prompts for how long the password needs to be
   let pwLength = prompt("How long do you want your password? 8-128 chars");
   //asks if you want to include lower case letters
-  let pwLowerCase = confirm("Do you want lower case letters?");
+  let pwLowerCase = confirm("Do you want lower case letters? Click OK for Yes, Cancel for No");
   //asks if you want to include upper case letters
-  let pwUpperCase = confirm("Do you want upper case letters?");
+  let pwUpperCase = confirm("Do you want upper case letters? Click OK for Yes, Cancel for No");
   //asks if you want to include numbers
-  let pwNumeric = confirm("Do you want numeric values?");
+  let pwNumeric = confirm("Do you want numeric values? Click OK for Yes, Cancel for No");
   //asks if you want to lincude special characters
-  let pwSpecialChars = confirm("Do you want special chars?");
+  let pwSpecialChars = confirm("Do you want special chars? Click OK for Yes, Cancel for No");
 
   //arrays of the different value types
   let upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
