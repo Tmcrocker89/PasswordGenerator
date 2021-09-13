@@ -34,62 +34,65 @@ function generatePassword(){
   let specialChars = ["`", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "=", "\\", "/", "[", "]",";", ":"]
 
   //loops the length of the pw requested
-  for(let i = 0; i < pwLength;)
+  if( pwLowerCase || pwUpperCase || pwNumeric || pwSpecialChars)
   {
-    console.log(generatedPassword.length)
-    //on the first pass through this makes sure atleast 1 of each type selected is entered into the password
-    if(generatedPassword.length === 0)
+    for(let i = 0; i < pwLength;)
     {
-      if(pwLowerCase)
+      console.log(generatedPassword.length)
+      //on the first pass through this makes sure atleast 1 of each type selected is entered into the password
+      if(generatedPassword.length === 0)
       {
-        generatedPassword += lowerCase[Math.floor(Math.random() * (lowerCase.length))];
-        i++
+        if(pwLowerCase)
+        {
+          generatedPassword += lowerCase[Math.floor(Math.random() * (lowerCase.length))];
+          i++
+        }
+        if(pwUpperCase)
+        {
+          generatedPassword += upperCase[Math.floor(Math.random() * (upperCase.length))];
+          i++
+        }
+        if(pwNumeric)
+        {
+          generatedPassword += numeric[Math.floor(Math.random() * (numeric.length))];
+          i++
+        }
+        if(pwSpecialChars)
+        {
+          generatedPassword += specialChars[Math.floor(Math.random() * (specialChars.length))];
+          i++
+        }
       }
-      if(pwUpperCase)
-      {
-        generatedPassword += upperCase[Math.floor(Math.random() * (upperCase.length))];
-        i++
+      //after it includes atleast one of each type, as long as the password length is less than the required length
+      //it selects a random number, then selects a random position in the array to get the character to concatonate to the password
+      else if(generatedPassword.length < pwLength){
+
+        let selectedCharType = Math.floor(Math.random() * 4)
+
+        if(selectedCharType === 0 && pwLowerCase)
+        {
+          generatedPassword += lowerCase[Math.floor(Math.random() * (lowerCase.length))];
+          i++
+        }
+        else if(selectedCharType === 1 && pwUpperCase)
+        {
+          generatedPassword += upperCase[Math.floor(Math.random() * (upperCase.length))];
+          i++
+        }
+        else if(selectedCharType === 2 && pwNumeric)
+        {
+          generatedPassword += numeric[Math.floor(Math.random() * (numeric.length))];
+          i++
+        }
+        else if(selectedCharType === 3 && pwSpecialChars)
+        {
+          generatedPassword += specialChars[Math.floor(Math.random() * (specialChars.length))];
+          i++
+        }
+
       }
-      if(pwNumeric)
-      {
-        generatedPassword += numeric[Math.floor(Math.random() * (numeric.length))];
-        i++
-      }
-      if(pwSpecialChars)
-      {
-        generatedPassword += specialChars[Math.floor(Math.random() * (specialChars.length))];
-        i++
-      }
+    
     }
-    //after it includes atleast one of each type, as long as the password length is less than the required length
-    //it selects a random number, then selects a random position in the array to get the character to concatonate to the password
-    else if(generatedPassword.length < pwLength){
-
-      let selectedCharType = Math.floor(Math.random() * 4)
-
-      if(selectedCharType === 0 && pwLowerCase)
-      {
-        generatedPassword += lowerCase[Math.floor(Math.random() * (lowerCase.length))];
-        i++
-      }
-      else if(selectedCharType === 1 && pwUpperCase)
-      {
-        generatedPassword += upperCase[Math.floor(Math.random() * (upperCase.length))];
-        i++
-      }
-      else if(selectedCharType === 2 && pwNumeric)
-      {
-        generatedPassword += numeric[Math.floor(Math.random() * (numeric.length))];
-        i++
-      }
-      else if(selectedCharType === 3 && pwSpecialChars)
-      {
-        generatedPassword += specialChars[Math.floor(Math.random() * (specialChars.length))];
-        i++
-      }
-
-    }
-  
   }
   //returns the password
   return generatedPassword
